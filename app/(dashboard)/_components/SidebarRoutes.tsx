@@ -1,10 +1,14 @@
 "use client";
 
-import { studentRoutes } from "@/constants";
+import { studentRoutes, teacherRoutes } from "@/constants";
 import SidebarItem from "./SidebarItem";
+import { usePathname } from "next/navigation";
 
-const SidebarRoutes = () => {
-  const routes = studentRoutes;
+export const SidebarRoutes = () => {
+  const pathname = usePathname();
+  const isTeacherPage = pathname?.includes("/teacher");
+  const routes = isTeacherPage ? teacherRoutes : studentRoutes;
+
   return (
     <div className="flex flex-col w-full">
       {routes.map((route) => (
@@ -18,5 +22,3 @@ const SidebarRoutes = () => {
     </div>
   );
 };
-
-export default SidebarRoutes;

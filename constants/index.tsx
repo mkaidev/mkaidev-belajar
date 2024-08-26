@@ -1,4 +1,5 @@
 import { Layout, Compass, List, BarChart, Users } from "lucide-react";
+
 export const studentRoutes = [
   {
     icon: Layout,
@@ -22,10 +23,5 @@ export const teacherRoutes = [
     icon: BarChart,
     label: "Analytics",
     href: "/teacher/analytics",
-  },
-  {
-    icon: Users,
-    label: "Manage Users",
-    href: "/teacher/users",
   },
 ];
