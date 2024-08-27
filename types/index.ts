@@ -1,3 +1,4 @@
+import { Course } from "@prisma/client";
 import { LucideIcon } from "lucide-react";
 
 export type SidebarItemProps = {
@@ -13,9 +14,7 @@ export type TitleFormProps = {
   courseId: string;
 };
 
-export type DescriptionFormProps = {
-  initialData: {
-    description: string;
-  };
+export type CoreFormProps = {
+  initialData: Course;
   courseId: string;
 };

@@ -10,7 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 
 import { cn } from "@/lib/utils";
-import { DescriptionFormProps } from "@/types";
+import { CoreFormProps } from "@/types";
 import {
   Form,
   FormControl,
@@ -26,10 +26,7 @@ const formSchema = z.object({
   description: z.string().min(1, { message: "Description is required" }),
 });
 
-export const FormDescription = ({
-  courseId,
-  initialData,
-}: DescriptionFormProps) => {
+export const FormDescription = ({ courseId, initialData }: CoreFormProps) => {
   const [isEditing, setIsEditing] = useState(false);
   const router = useRouter();
 
@@ -40,7 +37,7 @@ export const FormDescription = ({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      description: initialData.description || "",
+      description: initialData?.description || "",
     },
   });
 

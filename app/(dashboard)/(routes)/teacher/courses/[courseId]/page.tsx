@@ -6,6 +6,7 @@ import { db } from "@/lib/db";
 import { IconBadge } from "@/components/shared/IconBadge";
 import { FormTitle } from "./_components/FormTitle";
 import { FormDescription } from "./_components/FormDescription";
+import { FormImage } from "./_components/FormImage";
 
 const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   const { userId } = auth();
@@ -56,6 +57,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
           </div>
           <FormTitle initialData={course} courseId={course.id} />
           <FormDescription initialData={course} courseId={course.id} />
+          <FormImage initialData={course} courseId={course.id} />
         </div>
       </div>
     </div>
