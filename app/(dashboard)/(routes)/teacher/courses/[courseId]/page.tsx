@@ -5,6 +5,7 @@ import { CircleDollarSign, LayoutDashboard, ListChecks } from "lucide-react";
 import { db } from "@/lib/db";
 import { IconBadge } from "@/components/shared/IconBadge";
 import { FormTitle } from "./_components/FormTitle";
+import { FormDescription } from "./_components/FormDescription";
 
 const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   const { userId } = auth();
@@ -54,6 +55,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
             <h2 className="text-xl">Customize your course</h2>
           </div>
           <FormTitle initialData={course} courseId={course.id} />
+          <FormDescription initialData={course} courseId={course.id} />
         </div>
       </div>
     </div>

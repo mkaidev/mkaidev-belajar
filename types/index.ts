@@ -12,3 +12,10 @@ export type TitleFormProps = {
   };
   courseId: string;
 };
+
+export type DescriptionFormProps = {
+  initialData: {
+    description: string;
+  };
+  courseId: string;
+};
