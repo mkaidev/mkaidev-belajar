@@ -5,3 +5,10 @@ export type SidebarItemProps = {
   label: string;
   href: string;
 };
+
+export type TitleFormProps = {
+  initialData: {
+    title: string;
+  };
+  courseId: string;
+};
