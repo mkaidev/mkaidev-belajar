@@ -18,3 +18,12 @@ export type CoreFormProps = {
   initialData: Course;
   courseId: string;
 };
+
+export type CategoryFormProps = {
+  initialData: Course;
+  courseId: string;
+  options: {
+    label: string;
+    value: string;
+  }[];
+};
