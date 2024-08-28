@@ -1,6 +1,11 @@
 import { redirect } from "next/navigation";
 import { auth } from "@clerk/nextjs/server";
-import { CircleDollarSign, LayoutDashboard, ListChecks } from "lucide-react";
+import {
+  CircleDollarSign,
+  LayoutDashboard,
+  ListChecks,
+  File,
+} from "lucide-react";
 
 import { db } from "@/lib/db";
 import { IconBadge } from "@/components/shared/IconBadge";
@@ -9,6 +14,7 @@ import { FormDescription } from "./_components/FormDescription";
 import { FormImage } from "./_components/FormImage";
 import { FormCategory } from "./_components/FormCategory";
 import { FormPrice } from "./_components/FormPrice";
+import { FormAttachment } from "./_components/FormAttachment";
 
 const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   const { userId } = auth();
@@ -20,6 +26,13 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   const course = await db.course.findUnique({
     where: {
       id: params.courseId,
+    },
+    include: {
+      attachments: {
+        orderBy: {
+          createdAt: "desc",
+        },
+      },
     },
   });
 
@@ -84,12 +97,22 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
             </div>
             <div>TODO: Chapters</div>
           </div>
-          <div className="flex items-center gap-x-2">
-            <IconBadge icon={CircleDollarSign} />
-            <h2 className="text-xl">Sell your course</h2>
+          <div>
+            <div className="flex items-center gap-x-2">
+              <IconBadge icon={CircleDollarSign} />
+              <h2 className="text-xl">Sell your course</h2>
+            </div>
+
+            <FormPrice initialData={course} courseId={course.id} />
           </div>
 
-          <FormPrice initialData={course} courseId={course.id} />
+          <div>
+            <div className="flex items-center gap-x-2">
+              <IconBadge icon={File} />
+              <h2 className="text-xl">Resources & Attachments</h2>
+            </div>
+            <FormAttachment initialData={course} courseId={course.id} />
+          </div>
         </div>
       </div>
     </div>

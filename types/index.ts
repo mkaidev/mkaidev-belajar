@@ -1,4 +1,4 @@
-import { Course } from "@prisma/client";
+import { Attachment, Course } from "@prisma/client";
 import { LucideIcon } from "lucide-react";
 
 export type SidebarItemProps = {
@@ -26,4 +26,9 @@ export type CategoryFormProps = {
     label: string;
     value: string;
   }[];
+};
+
+export type AttachmentFormProps = {
+  initialData: Course & { attachments: Attachment[] };
+  courseId: string;
 };
