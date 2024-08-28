@@ -8,6 +8,7 @@ import { FormTitle } from "./_components/FormTitle";
 import { FormDescription } from "./_components/FormDescription";
 import { FormImage } from "./_components/FormImage";
 import { FormCategory } from "./_components/FormCategory";
+import { FormPrice } from "./_components/FormPrice";
 
 const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   const { userId } = auth();
@@ -73,6 +74,22 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
               value: category.id,
             }))}
           />
+        </div>
+
+        <div className="space-y-6">
+          <div>
+            <div className="flex items-center gap-x-2">
+              <IconBadge icon={ListChecks} />
+              <h2 className="text-xl">Course chapters</h2>
+            </div>
+            <div>TODO: Chapters</div>
+          </div>
+          <div className="flex items-center gap-x-2">
+            <IconBadge icon={CircleDollarSign} />
+            <h2 className="text-xl">Sell your course</h2>
+          </div>
+
+          <FormPrice initialData={course} courseId={course.id} />
         </div>
       </div>
     </div>
