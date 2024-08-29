@@ -37,3 +37,14 @@ export type ChaptersFormProps = {
   initialData: Course & { chapters: Chapter[] };
   courseId: string;
 };
+
+export type ChaptersListProps = {
+  items: Chapter[];
+  onReorder: (
+    updateData: {
+      id: string;
+      position: number;
+    }[]
+  ) => void;
+  onEdit: (id: string) => void;
+};

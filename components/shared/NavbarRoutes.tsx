@@ -2,16 +2,26 @@
 
 import Link from "next/link";
 import { LogOut } from "lucide-react";
+import { useState, useEffect } from "react";
 import { UserButton } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
 
 import { Button } from "../ui/button";
 
 const NavbarRoutes = () => {
+  const [isMounted, setIsMounted] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const isTeacherPage = pathname?.startsWith("/teacher");
   const isPlayerPage = pathname?.startsWith("/chapter");
+
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <div className="flex gap-2 ml-auto">
