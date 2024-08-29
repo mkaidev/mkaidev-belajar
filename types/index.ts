@@ -14,6 +14,14 @@ export type TitleFormProps = {
   courseId: string;
 };
 
+export type ChapterTitleFormProps = {
+  initialData: {
+    title: string;
+  };
+  courseId: string;
+  chapterId: string;
+}
+
 export type CoreFormProps = {
   initialData: Course;
   courseId: string;
@@ -48,3 +56,4 @@ export type ChaptersListProps = {
   ) => void;
   onEdit: (id: string) => void;
 };
+
