@@ -27,7 +27,7 @@ export type CoreFormProps = {
   courseId: string;
 };
 
-export type ChapterDescriptionFormProps = {
+export type CoreChapterFormProps = {
   initialData: Chapter;
   courseId: string;
   chapterId: string;
