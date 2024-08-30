@@ -78,3 +78,9 @@ export type ChapterVideoFormProps = {
 export type CategoriesProps = {
   items: Category[];
 }
+
+export type CourseWithProgressWithCategory = Course & {
+  category: Category | null;
+  chapters: { id: string }[];
+  progress: number | null;
+};
