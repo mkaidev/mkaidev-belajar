@@ -3,7 +3,8 @@ import {
   Category,
   Chapter,
   Course,
-  MuxData
+  MuxData,
+  UserProgress
 } from "@prisma/client";
 import { LucideIcon } from "lucide-react";
 
@@ -84,3 +85,12 @@ export type CourseWithProgressWithCategory = Course & {
   chapters: { id: string }[];
   progress: number | null;
 };
+
+export type CourseSidebarProps = {
+  course: Course & {
+    chapters: (Chapter & {
+      userProgress: UserProgress[] | null;
+    })[];
+  };
+  progressCount: number;
+}
