@@ -1,4 +1,10 @@
-import { Attachment, Chapter, Course, MuxData } from "@prisma/client";
+import {
+  Attachment,
+  Category,
+  Chapter,
+  Course,
+  MuxData
+} from "@prisma/client";
 import { LucideIcon } from "lucide-react";
 
 export type SidebarItemProps = {
@@ -67,4 +73,8 @@ export type ChapterVideoFormProps = {
   initialData: Chapter & { muxData?: MuxData | null };
   courseId: string;
   chapterId: string;
+}
+
+export type CategoriesProps = {
+  items: Category[];
 }
