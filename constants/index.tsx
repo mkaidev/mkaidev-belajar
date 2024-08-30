@@ -1,4 +1,4 @@
-import { Layout, Compass, List, BarChart, Users } from "lucide-react";
+import { Layout, Compass, List, BarChart } from "lucide-react";
 
 export const studentRoutes = [
   {
