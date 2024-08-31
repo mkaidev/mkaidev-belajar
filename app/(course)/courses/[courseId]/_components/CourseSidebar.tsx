@@ -4,6 +4,7 @@ import { auth } from "@clerk/nextjs/server";
 
 import { CourseSidebarProps } from "@/types";
 import { CourseSidebarItem } from "./CourseSidebarItem";
+import { CourseProgress } from "@/components/shared/CourseProgress";
 
 export const CourseSidebar = async ({
   course,
@@ -28,7 +29,11 @@ export const CourseSidebar = async ({
     <div className="h-full border-r flex flex-col overflow-y-auto shadow-sm">
       <div className="p-6 flex flex-col border-b">
         <h1 className="py-1 font-semibold">{course.title}</h1>
-        {/* Check purchase and add progress */}
+        {purchase && (
+          <div className="mt-10">
+            <CourseProgress variant="success" value={progressCount} />
+          </div>
+        )}
       </div>
       <div className="flex flex-col w-full">
         {course.chapters.map((chapter) => (
