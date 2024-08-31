@@ -3,13 +3,15 @@
 import Link from "next/link";
 import { LogOut } from "lucide-react";
 import { useState, useEffect } from "react";
-import { UserButton } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
+import { UserButton, useAuth } from "@clerk/nextjs";
 
-import { Button } from "../ui/button";
+import { isTeacher } from "@/lib/teacher";
 import { SearchInput } from "./SearchInput";
+import { Button } from "@/components/ui/button";
 
 const NavbarRoutes = () => {
+  const { userId } = useAuth();
   const [isMounted, setIsMounted] = useState(false);
   const pathname = usePathname();
 
@@ -32,7 +34,7 @@ const NavbarRoutes = () => {
           <SearchInput />
         </div>
       )}
-      <div className="flex gap-2 ml-auto">
+      <div className="flex gap-x-2 ml-auto">
         {isTeacherPage || isCoursePage ? (
           <Link href="/">
             <Button size="sm" variant={"ghost"}>
@@ -40,13 +42,13 @@ const NavbarRoutes = () => {
               Exit
             </Button>
           </Link>
-        ) : (
+        ) : isTeacher(userId) ? (
           <Link href="/teacher/courses">
             <Button size="sm" variant={"ghost"}>
               Teacher Mode
             </Button>
           </Link>
-        )}
+        ) : null}
 
         <UserButton afterSignOutUrl="/" />
       </div>
